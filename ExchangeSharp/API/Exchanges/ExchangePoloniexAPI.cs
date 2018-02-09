@@ -460,6 +460,16 @@ namespace ExchangeSharp
             return amounts;
         }
 
+        public override AssetsInfo GetHistoricalDespositsWithdrawals(int days)
+        {
+            //AssetsInfo assetsInfo = 
+            JToken result = MakePrivateAPIRequest("returnDepositsWithdrawals", "start", DateTime.Now.AddDays(-days).UnixTimestampFromDateTimeSeconds(), "end", DateTime.Now.UnixTimestampFromDateTimeSeconds());
+
+            AssetsInfo assets = JsonConvert.DeserializeObject<AssetsInfo>(result.ToString());
+            
+            return assets;
+        }
+
         public override ExchangeOrderResult PlaceOrder(ExchangeOrderRequest order)
         {
             if (order.OrderType == OrderType.Market)

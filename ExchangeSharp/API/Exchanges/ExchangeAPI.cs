@@ -250,6 +250,12 @@ namespace ExchangeSharp
         public Task<Dictionary<string, decimal>> GetAmountsAvailableToTradeAsync() => Task.Factory.StartNew<Dictionary<string, decimal>>(() => GetAmountsAvailableToTrade());
 
         /// <summary>
+        /// Returns your deposit and withdrawal history within a range
+        /// </summary>
+        /// <returns>Symbol / amount dictionary</returns>
+        public virtual AssetsInfo GetHistoricalDespositsWithdrawals(int days) { return GetHistoricalDespositsWithdrawals(days); }
+
+        /// <summary>
         /// Place an order
         /// </summary>
         /// <param name="order">The order request</param>
